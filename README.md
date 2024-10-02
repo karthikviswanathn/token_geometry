@@ -1,4 +1,1 @@
-## To run this code follow these steps
-
-```bash
-./generate_summary.sh
+## The code is going to be uploaded soon
