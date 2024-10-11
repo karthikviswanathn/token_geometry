@@ -28,7 +28,7 @@ The list of models currently supported -
 
 ## Dataset
 Currently we use the prompts from [Pile-10K](https://huggingface.co/datasets/NeelNanda/pile-10k).
-We filter only prompts of sequence length of atleast `1024` according to the tokenization schemes
+We filter only prompts with atleast `1024` tokens according to the tokenization schemes
 of all the above models. This results in `2244` prompts after filtering.
 The indices of the filtered prompts is stored in `filtered_indices.npy`
 
