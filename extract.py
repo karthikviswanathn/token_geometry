@@ -54,7 +54,6 @@ def parse_arguments():
 
 args = parse_arguments()
 
-
 login_token = '' # Fill in login_token here
 login(token=login_token)
 args = parse_arguments()
