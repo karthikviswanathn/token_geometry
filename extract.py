@@ -27,14 +27,6 @@ def convert_to_numpy(hs):
     return np.array([item.to(torch.float32).cpu().detach().numpy() for item in hs])
 
 def extract_hidden_states(sequence, model, tokenizer, max_length):
-  """Extracts the hidden layer representation for a protein sequence using ESM-2.
-
-  Args:
-    protein_sequence: The protein sequence as a string.
-
-  Returns:
-    A tuple of tensors representing the hidden states.
-  """
   device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
   with torch.no_grad():  # Disable gradient computation  
       inputs = tokenizer(sequence.strip() , add_special_tokens = False, \
