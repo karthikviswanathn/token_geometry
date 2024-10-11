@@ -28,13 +28,13 @@ The list of models currently supported -
 
 ## Dataset
 Currently we use the prompts from [Pile-10K](https://huggingface.co/datasets/NeelNanda/pile-10k).
-We further filter only prompts of sequence length $N \geq 1024$ according to the tokenization schemes
-of all the above models. This results in $2244$ prompts after filtering.
+We filter only prompts of sequence length $`N \geq 1024`$ according to the tokenization schemes
+of all the above models. This results in $`2244`$ prompts after filtering.
 The indices of the filtered prompts is stored in `filtered_indices.npy`
 
 ### Shuffling experiment
-For the shuffling experiment, we consider $50$ random prompts from the filtered $10$K dataset,
-i.e. we choose $50$ prompts from the $2242$ prompts. The indices of these prompts are stored in 
+For the shuffling experiment, we consider $`50`$ random prompts from the filtered dataset,
+i.e. we choose $`50`$ prompts from the $`2242`$ prompts. The indices of these prompts are stored in 
 `subset_indices.npy`. 
 
 ## References
