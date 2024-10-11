@@ -1,2 +1,2 @@
-# ICLR-2025 submission
-## The code is going to be uploaded soon
+# The Geometry of Tokens in Internal Representations of Large Language Models
+Source code for the paper titled 'The Geometry of Tokens in Internal Representations of Large Language Models'
