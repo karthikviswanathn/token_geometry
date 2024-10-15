@@ -86,7 +86,7 @@ from the notebook to get Figure 2 in the paper -
 on 'Comparing token geometry of prompts in different models'. Here is an example plot
 from the notebook to get Figure 5 in the paper -
 <p align="center">
-    <img src="results/plots/figs/models/id_686.png" width="400">
+    <img src="results/plots/figs/models/id_686.png" width="500">
 </p>
 
 ## References
