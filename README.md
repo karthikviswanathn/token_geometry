@@ -37,6 +37,26 @@ For the shuffling experiment, we consider `50` random prompts from the filtered 
 i.e. we choose `50` prompts from the `2242` prompts. The indices of these prompts are stored in 
 `subset_indices.npy`. 
 
+## Reproducing the results
+
+### Extracting the token representations and compute the corresponding distance matrices
+
+```
+python src/extract.py --input_dir results --model_name "$model_name" --method structured
+```
+
+To run this for the `shuffled` case replace `--method structured` with
+`--method shuffled`
+
+### Calculating the observables - ID, NO and cosine similarities
+
+```
+python src/summarize.py --input_dir results --model_name "$model_name" --method structured
+```
+
+To run this for the `shuffled` case replace `--method structured` with
+`--method shuffled`
+
 ## References
 
 - [DADApy](https://github.com/sissa-data-science/DADApy)
