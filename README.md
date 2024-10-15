@@ -78,28 +78,16 @@ The plots in the papers are reproduced in the two notebooks in `results/plots`
 on 'The geometry of shuffled and unshuffled prompts'. Here is an example plot
 from the notebook to get Figure 2 in the paper -
 
-<div style="text-align: center;">
-  <table>
-    <tr>
-      <td><img src="results/plots/figs/shuffle/ids_llama_14.png" width="400"></td>
-    </tr>
-  </table>
-</div>
-
 <p align="center">
-    <img src="results/plots/figs/shuffle/ids_llama_14.png" width="400">
+    <img src="results/plots/figs/shuffle/ids_llama_14.png" width="500">
 </p>
 
 2. `model_comparison.ipynb` - Reproduces the plots in section 4.3 of the paper
 on 'Comparing token geometry of prompts in different models'. Here is an example plot
 from the notebook to get Figure 5 in the paper -
-<div style="text-align: center;">
-  <table>
-    <tr>
-      <td><img src="results/plots/figs/models/id_686.png" width="400"></td>
-    </tr>
-  </table>
-</div>
+<p align="center">
+    <img src="results/plots/figs/models/id_686.png" width="400">
+</p>
 
 ## References
 
