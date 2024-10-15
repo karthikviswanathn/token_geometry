@@ -65,7 +65,7 @@ computation the observables in the folder `results/Pile-Structured/Llama-3-8B`.
 ```
 python src/summarize.py --input_dir results --method structured --model_name Llama-3-8B 
 ```
-This was computed using AMD Genoa CPU node with 192 cores and a reserved memory
+This was computed using an AMD Genoa CPU node with 192 cores and a reserved memory
 of 336GB. It takes around 25 minutes to compute all the observables
 with the NO computations taking around 20 minutes
 for `2242` prompts for each model. It is possible to have a more optimized
