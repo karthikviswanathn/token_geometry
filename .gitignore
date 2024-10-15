@@ -2,3 +2,4 @@
 .DS_Store
 generate_summary.sh
 get_token_reps.sh
+results/plots/.ipynb_checkpoints/
