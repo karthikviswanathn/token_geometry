@@ -3,6 +3,7 @@ from tqdm import tqdm
 from dadapy import data
 from joblib import Parallel, delayed
 from utils import parse_arguments
+import os
 
 def compute_ids_for_all_layers(reps):
     all_ids = []
@@ -155,6 +156,7 @@ if __name__ == "__main__":
         n_batches = 50
     
     input_dir = f"{args.input_dir}/{dataset_name}/{model_name}"
+    os.makedirs(f"{input_dir}/summaries", exist_ok=True)
     read_and_write_gride(input_dir, n_batches = n_batches)
     read_and_write_csn(input_dir, n_batches = n_batches)
     read_and_write_no(input_dir, n_batches = n_batches)

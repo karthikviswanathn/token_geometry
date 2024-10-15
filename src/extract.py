@@ -56,7 +56,7 @@ if __name__ == "__main__":
         
         # Batch size for processing. This is also the number of prompts to be 
         # saved in each .npy file for processing
-        batch_sz = 16
+        batch_sz = 32
         # Load precomputed filtered indices. This contains the indices of the 
         # prompts with atleast 1024 tokens according to the tokenization schemes 
         # of Llama-3-8B, Mistral-7B-v0.1 and Pythia-6.9B

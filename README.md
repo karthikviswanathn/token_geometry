@@ -39,23 +39,33 @@ i.e. we choose `50` prompts from the `2242` prompts. The indices of these prompt
 
 ## Reproducing the results
 
+Below we show the scripts to extract token represetations and compute the 
+observables for the `structured` case. Instead to run the following scripts for 
+the `shuffled` case replace `--method structured` with`--method shuffled`.
+
 ### Extracting the token representations and compute the corresponding distance matrices
 
+The following code extracts the representations for `Llama-3-8B`  model and stores 
+the distances matrices in the folder `results`. 
 ```
-python src/extract.py --input_dir results --model_name "$model_name" --method structured
+python src/extract.py --input_dir results --method structured --model_name Llama-3-8B --login_token <your_hf_login_token>
 ```
-
-To run this for the `shuffled` case replace `--method structured` with
-`--method shuffled`
+This was computed using 4 NVIDIA H100 GPUs with a reserved memory of 720GB.
+It takes around `40 minutes` to extract the token representations and compute
+the distance matrices for `2242` prompts for each model. It is possible to have
+a more optimized configuration to run the above script.
 
 ### Calculating the observables - ID, NO and cosine similarities
-
+stores 
+the observables in the folder `results/Pile-Structured/Llama-3-8B`. 
 ```
-python src/summarize.py --input_dir results --model_name "$model_name" --method structured
+python src/summarize.py --input_dir results --method structured --model_name Llama-3-8B 
 ```
-
-To run this for the `shuffled` case replace `--method structured` with
-`--method shuffled`
+This was computed using AMD Genoa CPU node with 192 cores and a reserved memory
+of 336GB. It takes around `25 minutes` to compute all the observables
+(ID, NO and cosine similarity) with the No computations taking around 20 minutes
+for `2242` prompts for each model. It is possible to have a more optimized
+configuration to run the above script.
 
 ## References
 

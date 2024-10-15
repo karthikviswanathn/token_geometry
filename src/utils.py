@@ -9,6 +9,7 @@ def parse_arguments():
     parser.add_argument("--input_dir", type=str, default=None)
     parser.add_argument("--model_name", type=str, default=None)
     parser.add_argument("--method", type=str, default=None)
+    parser.add_argument("--login_token", type=str, default=None)
     args = parser.parse_args()
     print("input args:\n", json.dumps(vars(args), indent=4, separators=(",", ":")))
     return args
