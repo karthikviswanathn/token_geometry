@@ -47,7 +47,9 @@ Currently `--model_name` can be set to `Llama-3-8B`, `Mistral-7B`, `Pythia-6.9B`
 ### Extracting the token representations and compute the corresponding distance matrices
 
 The following script extracts the representations for `Llama-3-8B`  model and stores 
-the distances matrices in the folder `results`. 
+the distances matrices in the folder `results/Pile-Structured/Llama-3-8B`.
+To access the models, the [hugging face login token](https://huggingface.co/docs/hub/en/security-tokens)
+that starts with `hf_` should be provided to run this script. 
 ```
 python src/extract.py --input_dir results --method structured --model_name Llama-3-8B --login_token <your_hf_login_token>
 ```
@@ -68,6 +70,9 @@ of 336GB. It takes around 25 minutes to compute all the observables
 with the NO computations taking around 20 minutes
 for `2242` prompts for each model. It is possible to have a more optimized
 configuration to run the above script.
+
+### Plotting the plots in the paper
+Th
 
 ## References
 
