@@ -49,7 +49,7 @@ Currently `--model_name` can be set to `Llama-3-8B`, `Mistral-7B`, `Pythia-6.9B`
 The following script extracts the representations for `Llama-3-8B`  model and stores 
 the distances matrices in the folder `results/Pile-Structured/Llama-3-8B`.
 To access the models, the [hugging face login token](https://huggingface.co/docs/hub/en/security-tokens)
-that starts with `hf_` should be provided to run this script. 
+that starts with `hf` should be provided to run this script. 
 ```
 python src/extract.py --input_dir results --method structured --model_name Llama-3-8B --login_token <your_hf_login_token>
 ```
@@ -71,8 +71,13 @@ with the NO computations taking around 20 minutes
 for `2242` prompts for each model. It is possible to have a more optimized
 configuration to run the above script.
 
-### Plotting the plots in the paper
-Th
+### Reproducing the plots in the paper
+The plots in the papers are reproduced in the two notebooks in `results/plots`
+
+1. `shuffle_experiment.ipynb` - Reproduces the plots in section 4.2 of the paper
+on 'The geometry of shuffled and unshuffled prompts'
+2. `model_comparison.ipynb` - Reproduces the plots in section 4.3 of the paper
+on 'Comparing token geometry of prompts in different models'
 
 ## References
 
