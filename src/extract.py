@@ -133,9 +133,9 @@ if __name__ == "__main__":
                             for hs, nearest_nbr_list in zip(hidden_states, nearest_nbrs))
                 all_nn_sims.append(nn_sim)
                 
-            # csn_sim = Parallel(n_jobs=-1)(delayed(compute_cosine_similarities)(hs) for hs in hidden_states)        
+            csn_sim = Parallel(n_jobs=-1)(delayed(compute_cosine_similarities)(hs) for hs in hidden_states)        
             np.save(f"{output_folder}/distances/{batch_num}.npy", distances)
-            # np.save(f"{output_folder}/cosine_similarities/{batch_num}.npy", csn_sim)
+            np.save(f"{output_folder}/cosine_similarities/{batch_num}.npy", csn_sim)
         np.save(f"{output_folder}/summaries/losses.npy", losses)
         if args.find_nn_sim == "True": 
             np.save(f"{output_folder}/summaries/nn_sim.npy", all_nn_sims) 
