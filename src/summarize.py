@@ -4,6 +4,7 @@ from dadapy import data
 from joblib import Parallel, delayed
 from utils import parse_arguments
 import os
+import networkx as nx
 
 def compute_ids_for_all_layers(reps):
     all_ids = []
@@ -132,6 +133,69 @@ def read_and_write_no(input_dir, n_batches):
                               for idx in range(n_batches)) 
     np.save(f"{input_dir}/summaries/mnos.npy", np.concatenate(mnos, axis = 0))
     
+    
+def compute_reciprocity(rep, maxk = 32):
+    rep_arg_sorted = np.argsort(rep, axis = 1)
+    # Initialize the answer array to hold the number of overlaps at each knn level
+    ans = np.zeros(maxk + 1)
+    ind = []
+    for knn in np.arange(1, maxk):
+        for idx in range(len(rep_arg_sorted)):
+            ind.append([idx, rep_arg_sorted[idx, knn]])
+        ans[knn] = nx.overall_reciprocity(nx.DiGraph(ind))
+    return ans
+
+
+def compute_reciprocity_for_all_layers(reps):
+    all_reciprocities = []
+    for rep in reps[1:]: # Not calculating NO for embedding layer
+        all_reciprocities.append(compute_reciprocity(rep))
+    return np.array(all_reciprocities)
+
+def compute_reciprocities(input_file):
+    reps = np.load(input_file)
+    all_reciprocities = []
+    for rep in tqdm(reps):
+        all_reciprocities.append(compute_reciprocity_for_all_layers(rep))
+    return np.array(all_reciprocities)
+
+def read_and_write_reciprocity(input_dir, n_batches):
+    reciprocities = Parallel(n_jobs=-1)(delayed(compute_reciprocities)(f"{input_dir}/distances/{idx}.npy")\
+                              for idx in range(n_batches)) 
+    np.save(f"{input_dir}/summaries/reciprocities.npy", np.concatenate(reciprocities, axis = 0))
+    
+
+def compute_transitivity(rep, maxk = 32):
+    rep_arg_sorted = np.argsort(rep, axis = 1)
+    # Initialize the answer array to hold the number of overlaps at each knn level
+    ans = np.zeros(maxk + 1)
+    ind = []
+    for knn in np.arange(1, maxk):
+        for idx in range(len(rep_arg_sorted)):
+            ind.append([idx, rep_arg_sorted[idx, knn]])
+        ans[knn] = nx.transitivity(nx.DiGraph(ind))
+    return ans
+
+
+def compute_transitivity_for_all_layers(reps):
+    all_transitivities = []
+    for rep in reps[1:]: # Not calculating NO for embedding layer
+        all_transitivities.append(compute_transitivity(rep))
+    return np.array(all_transitivities)
+
+def compute_transitivities(input_file):
+    reps = np.load(input_file)
+    all_transitivities = []
+    for rep in tqdm(reps):
+        all_transitivities.append(compute_transitivity_for_all_layers(rep))
+    return np.array(all_transitivities)
+
+def read_and_write_transitivity(input_dir, n_batches):
+    transitivities = Parallel(n_jobs=-1)(delayed(compute_transitivities)(f"{input_dir}/distances/{idx}.npy")\
+                              for idx in range(n_batches)) 
+    np.save(f"{input_dir}/summaries/transitivities.npy", np.concatenate(transitivities, axis = 0))
+    
+    
 if __name__ == "__main__":
     """
         This code takes in model, method(structured or shuffled) as the input
@@ -157,6 +221,8 @@ if __name__ == "__main__":
     
     input_dir = f"{args.input_dir}/{dataset_name}/{model_name}"
     os.makedirs(f"{input_dir}/summaries", exist_ok=True)
-    read_and_write_gride(input_dir, n_batches = n_batches)
-    read_and_write_csn(input_dir, n_batches = n_batches)
-    read_and_write_no(input_dir, n_batches = n_batches)
+#    read_and_write_gride(input_dir, n_batches = n_batches)
+#    read_and_write_csn(input_dir, n_batches = n_batches)
+#    read_and_write_no(input_dir, n_batches = n_batches)
+#    read_and_write_reciprocity(input_dir, n_batches = n_batches)
+    read_and_write_transitivity(input_dir, n_batches = n_batches)
